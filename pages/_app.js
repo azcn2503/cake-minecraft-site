@@ -2,7 +2,7 @@ import React from "react";
 import App, { Container } from "next/app";
 
 import GlobalStyle from "../components/global-style";
-import WebfontsContext from "../components/webfonts-context";
+import WebfontsContext from "../components/site-context";
 
 function loadWebFonts(loader, done) {
   loader.load({
@@ -13,6 +13,9 @@ function loadWebFonts(loader, done) {
     inactive: () => done()
   });
 }
+
+const emojis = ["🧁", "🍥", "🍰", "🥮", "🎂", "⛏", "🕹"];
+const emojiIndex = Math.floor(Math.random() * emojis.length);
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -28,7 +31,8 @@ class MyApp extends App {
   constructor(props) {
     super(props);
     this.state = {
-      webFontsLoaded: false
+      webFontsLoaded: false,
+      cakeEmoji: <span title="The cake is real">{emojis[emojiIndex]}</span>
     };
   }
 
@@ -45,17 +49,18 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props;
-    const { webFontsLoaded } = this.state;
+    const { webFontsLoaded, cakeEmoji } = this.state;
 
     return (
       <Container>
         <GlobalStyle />
         <WebfontsContext.Provider
           value={{
-            loaded: webFontsLoaded
+            webFontsLoaded,
+            cakeEmoji
           }}
         >
-          <Component {...pageProps} webFontsLoaded={webFontsLoaded} />
+          <Component {...pageProps} />
         </WebfontsContext.Provider>
       </Container>
     );

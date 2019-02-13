@@ -25,8 +25,13 @@ const RulesContent = () => (
     </li>
     <li>
       You must use the same nick on Discord as in-game. You can change your
-      discord name specifically for our server, see
-      https://support.discordapp.com/hc/en-us/articles/219070107-Server-Nicknames
+      discord name specifically for our server, see{" "}
+      <a
+        href="https://support.discordapp.com/hc/en-us/articles/219070107-Server-Nicknames"
+        target="_blank"
+      >
+        https://support.discordapp.com/hc/en-us/articles/219070107-Server-Nicknames
+      </a>
     </li>
     <li>
       Respect zoning restrictions as described in the{" "}

@@ -10,10 +10,20 @@ export default createGlobalStyle`
     background-color: rgba(255, 255, 255, .87);
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
     height: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
   ol, ul {

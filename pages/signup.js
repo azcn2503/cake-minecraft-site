@@ -10,18 +10,20 @@ export default withRouter(({ router }) => (
   <Fragment>
     <About blur />
     <Dialog
+      big
       router={router}
       title={<h1>Sign up</h1>}
       content={<SignupContent />}
+      DialogContentProps={{
+        style: {
+          padding: 0,
+          overflow: "hidden"
+        }
+      }}
     />
   </Fragment>
 ));
 
 const SignupContent = () => {
-  return (
-    <form>
-      <TextField fullWidth placeholder={"Your real name"} />
-      <TextField fullWidth placeholder={"Your Discord username"} />
-    </form>
-  );
+  return <iframe src="https://goo.gl/forms/AnWjQW8jG0Z3SKxt2" />;
 };

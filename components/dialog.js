@@ -5,7 +5,14 @@ import { transition } from "../styles/styles";
 
 const transitionDuration = 200;
 
-const Dialog = ({ router, title, content, autoSize }) => {
+const Dialog = ({
+  router,
+  title,
+  content,
+  autoSize,
+  DialogContentProps,
+  big
+}) => {
   const closeDialog = () => {
     setOpen(false);
     setTimeout(() => router.push("/"), transitionDuration);
@@ -34,16 +41,21 @@ const Dialog = ({ router, title, content, autoSize }) => {
         className={classNames({ open })}
       />
       <StyledDialog
+        big={big}
         autoSize={autoSize}
         className={classNames({
           open
         })}
       >
         <DialogTitle>{title}</DialogTitle>
-        <DialogContent>{content}</DialogContent>
+        <DialogContent {...DialogContentProps}>{content}</DialogContent>
       </StyledDialog>
     </Fragment>
   );
+};
+
+Dialog.defaultProps = {
+  DialogContentProps: {}
 };
 
 const DialogTitle = props => <StyledDialogTitle {...props} />;
@@ -56,10 +68,10 @@ const StyledDialog = styled.div`
   ${transition()}
 
   position: absolute;
-  width: 50%;
-  max-width: ${props => (props.autoSize ? "100vw" : "600px")};
-  height: 50%;
-  max-height: ${props => (props.autoSize ? "100vh" : "400px")};
+  width: ${props => (props.big ? "80%" : "50%")};
+  /* max-width: ${props => (props.autoSize ? "100vw" : "600px")}; */
+  height: ${props => (props.big ? "80%" : "50%")};
+  /* max-height: ${props => (props.autoSize ? "100vh" : "400px")}; */
   top: 50%;
   left: 50%;
   border: 2px solid white;

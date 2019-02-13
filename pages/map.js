@@ -19,7 +19,7 @@ export default withRouter(({ router }) => (
           />
         </Fragment>
       }
-      autoSize
+      big
     />
   </Fragment>
 ));

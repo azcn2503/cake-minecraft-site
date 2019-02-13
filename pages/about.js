@@ -5,16 +5,16 @@ import Link from "next/link";
 
 import Navigation from "../components/navigation";
 import { transition } from "../styles/styles";
-import WebfontsContext from "../components/webfonts-context";
+import SiteContext from "../components/site-context";
 
 export default pageProps => (
   <Fragment>
-    <WebfontsContext.Consumer>
-      {({ loaded: webFontsLoaded }) => (
+    <SiteContext.Consumer>
+      {({ webFontsLoaded, cakeEmoji }) => (
         <Main {...pageProps} webFontsLoaded={webFontsLoaded}>
           <TitleSection>
             <Title>
-              <CakeEmoji /> <Link href="/">Cake</Link>
+              {cakeEmoji} <Link href="/">Cake</Link>
             </Title>
             <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
           </TitleSection>
@@ -24,15 +24,9 @@ export default pageProps => (
           <Navigation />
         </Main>
       )}
-    </WebfontsContext.Consumer>
+    </SiteContext.Consumer>
   </Fragment>
 );
-
-const CakeEmoji = () => {
-  const emojis = ["🧁", "🍥", "🍰", "🥮", "🎂", "⛏"];
-  const index = Math.floor(Math.random() * emojis.length);
-  return emojis[index];
-};
 
 const Highlighted = styled.span`
   color: white;
