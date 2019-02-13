@@ -1,19 +1,32 @@
 import { Fragment, useEffect, useState } from "react";
 import classNames from "classnames";
 import styled from "styled-components";
+import { transition } from "../styles/styles";
 
-const Dialog = ({ router, title, content }) => {
-  const [open, setOpen] = useState(false);
+const transitionDuration = 200;
+
+const Dialog = ({ router, title, content, autoSize }) => {
   const closeDialog = () => {
     setOpen(false);
-    setTimeout(() => router.push("/"), 200);
+    setTimeout(() => router.push("/"), transitionDuration);
   };
+  const onWindowKeyDown = ({ keyCode }) => {
+    if (keyCode === 27) {
+      closeDialog();
+    }
+  };
+
+  const [open, setOpen] = useState(false);
+
   useEffect(() => {
+    window.addEventListener("keydown", onWindowKeyDown);
     requestAnimationFrame(() => setOpen(true));
     return () => {
+      window.removeEventListener("keydown", onWindowKeyDown);
       setOpen(false);
     };
   }, []);
+
   return (
     <Fragment>
       <DialogBackground
@@ -21,6 +34,7 @@ const Dialog = ({ router, title, content }) => {
         className={classNames({ open })}
       />
       <StyledDialog
+        autoSize={autoSize}
         className={classNames({
           open
         })}
@@ -38,25 +52,25 @@ const DialogBackground = props => <StyledDialogBackground {...props} />;
 
 const DialogContent = props => <StyledDialogContent {...props} />;
 
-const styledTransition = () => `
-  transition-property: opacity, transform;
-  transition-duration: 0.2s;
-`;
-
 const StyledDialog = styled.div`
-  ${styledTransition()};
+  ${transition()}
+
   position: absolute;
   width: 50%;
-  max-width: 600px;
+  max-width: ${props => (props.autoSize ? "100vw" : "600px")};
   height: 50%;
-  max-height: 400px;
+  max-height: ${props => (props.autoSize ? "100vh" : "400px")};
   top: 50%;
   left: 50%;
   border: 2px solid white;
   border-radius: 4px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
   transform: translate(-50%, calc(-50% - 20px));
   opacity: 0;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
 
   &.open {
     opacity: 1;
@@ -67,14 +81,19 @@ const StyledDialog = styled.div`
 const StyledDialogTitle = styled.div`
   padding: 30px;
   border-bottom: 2px solid white;
+
+  flex-shrink: 0;
 `;
 
 const StyledDialogContent = styled.div`
   padding: 30px;
+  overflow: auto;
+  flex-grow: 1;
 `;
 
 const StyledDialogBackground = styled.div`
-  ${styledTransition()};
+  ${transition()}
+
   position: absolute;
   top: 0;
   left: 0;

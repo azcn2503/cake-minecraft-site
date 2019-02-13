@@ -3,20 +3,28 @@ import styled from "styled-components";
 
 import Link from "next/link";
 
-export default () => (
+import Navigation from "../components/navigation";
+import { transition } from "../styles/styles";
+import WebfontsContext from "../components/webfonts-context";
+
+export default pageProps => (
   <Fragment>
-    <Main>
-      <TitleSection>
-        <Title>
-          <CakeEmoji /> <Link href="/">Cake</Link>
-        </Title>
-        <Subtitle>A whitelist Minecraft snapshot server</Subtitle>
-      </TitleSection>
-      <p>
-        Current version: <Highlighted>19w04b</Highlighted>
-      </p>
-      <Link href="/rules">Rules</Link> | <Link href="/signup">Sign up</Link>
-    </Main>
+    <WebfontsContext.Consumer>
+      {({ loaded: webFontsLoaded }) => (
+        <Main {...pageProps} webFontsLoaded={webFontsLoaded}>
+          <TitleSection>
+            <Title>
+              <CakeEmoji /> <Link href="/">Cake</Link>
+            </Title>
+            <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
+          </TitleSection>
+          <p>
+            Current version: <Highlighted>19w04b</Highlighted>
+          </p>
+          <Navigation />
+        </Main>
+      )}
+    </WebfontsContext.Consumer>
   </Fragment>
 );
 
@@ -31,6 +39,8 @@ const Highlighted = styled.span`
 `;
 
 const Main = styled.div`
+  ${transition(["opacity", "filter"])}
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -38,6 +48,8 @@ const Main = styled.div`
   max-height: 400px;
   transform: translate(-50%, -50%);
   text-align: center;
+  opacity: ${props => (props.webFontsLoaded ? 1 : 0)};
+  filter: ${props => (props.blur ? "blur(2px)" : undefined)};
 `;
 
 const Title = styled.h1`
@@ -46,9 +58,6 @@ const Title = styled.h1`
 
 const Subtitle = styled.p`
   color: white;
-  font-style: italic;
-  text-transform: capitalize;
-  font-size: 0.8em;
 `;
 
 const TitleSection = styled.div`

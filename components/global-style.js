@@ -1,17 +1,30 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+  *::-webkit-scrollbar {
+    background-color: black;
+    width: 4px;
+    height: 4px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .87);
+  }
+
   html, body {
     margin: 0;
     padding: 0;
     height: 100%;
   }
 
+  ol, ul {
+    margin: 0;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     color: rgba(255, 255, 255, .87);
   }
 
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6, p, li {
     margin: 0;
     margin-bottom: 20px;
 
@@ -20,13 +33,24 @@ export default createGlobalStyle`
     }
   }
 
-  body {
+  input, textarea, select {
+    outline: none;
+  }
+  input[type=button], input[type=submit] {
+    cursor: pointer;
+  }
+
+  input, textarea, select, body {
     background-color: black;
-    font-size: 24px;
+    font-family: "Droid Sans";
+    font-size: 14px;
     line-height: 34px;
-    color: rgba(255, 255, 255, .53);
+    color: white;
+  }
+
+  body {
     overflow: hidden;
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.87);
+    color: rgba(255, 255, 255, .53);
   }
 
   a {

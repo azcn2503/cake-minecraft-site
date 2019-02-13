@@ -1,11 +1,13 @@
-import { Fragment, PureComponent } from "react";
+import { Fragment } from "react";
 
 import GlobalStyle from "../components/global-style";
 import About from "./about";
 
-export default () => (
-  <Fragment>
-    <GlobalStyle />
-    <About />
-  </Fragment>
-);
+export default pageProps => {
+  return (
+    <Fragment>
+      <GlobalStyle />
+      <About {...pageProps} />
+    </Fragment>
+  );
+};
