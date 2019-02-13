@@ -10,7 +10,9 @@ export default withRouter(({ router }) => (
     <Dialog
       router={router}
       title={<h1>Discord</h1>}
-      content={<a href="#">It be a link to open Discord</a>}
+      content={
+        <a href="https://discord.gg/Bdrv25U">It be a link to open Discord</a>
+      }
     />
   </Fragment>
 ));
