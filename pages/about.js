@@ -19,7 +19,7 @@ export default pageProps => (
             <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
           </TitleSection>
           <p>
-            Current version: <Highlighted>19w04b</Highlighted>
+            Current version: <Highlighted>19w07a</Highlighted>
           </p>
           <Navigation />
         </Main>
