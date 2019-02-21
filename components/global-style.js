@@ -36,7 +36,7 @@ export default createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6, p, li {
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 1em;
 
     &:last-child {
       margin-bottom: 0;
@@ -53,8 +53,8 @@ export default createGlobalStyle`
   input, textarea, select, body {
     background-color: black;
     font-family: "Droid Sans";
-    font-size: 14px;
-    line-height: 34px;
+    font-size: 1em;
+    line-height: 2em;
     color: white;
   }
 

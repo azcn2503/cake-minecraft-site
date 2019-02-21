@@ -2,6 +2,8 @@ import Document, { Head, Main, NextScript } from "next/document";
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from "styled-components";
 
+import cakeEmoji from "../utils/cake-emoji";
+
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     // Step 1: Create an instance of ServerStyleSheet
@@ -23,6 +25,11 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <title>{cakeEmoji} Cake</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>

@@ -68,14 +68,14 @@ const StyledDialog = styled.div`
   ${transition()}
 
   position: absolute;
-  width: ${props => (props.big ? "80%" : "50%")};
+  width: 80%;
   /* max-width: ${props => (props.autoSize ? "100vw" : "600px")}; */
-  height: ${props => (props.big ? "80%" : "50%")};
+  height: 80%;
   /* max-height: ${props => (props.autoSize ? "100vh" : "400px")}; */
   top: 50%;
   left: 50%;
   border: 2px solid white;
-  border-radius: 4px;
+  border-radius: 0.5em;
   background-color: rgba(0, 0, 0, 0.5);
   transform: translate(-50%, calc(-50% - 20px));
   opacity: 0;
@@ -91,14 +91,15 @@ const StyledDialog = styled.div`
 `;
 
 const StyledDialogTitle = styled.div`
-  padding: 30px;
+  padding: 1em;
   border-bottom: 2px solid white;
+  text-align: center;
 
   flex-shrink: 0;
 `;
 
 const StyledDialogContent = styled.div`
-  padding: 30px;
+  padding: 1em;
   overflow: auto;
   flex-grow: 1;
 `;

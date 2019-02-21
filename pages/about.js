@@ -4,13 +4,14 @@ import styled from "styled-components";
 import Link from "next/link";
 
 import Navigation from "../components/navigation";
-import { transition } from "../styles/styles";
 import SiteContext from "../components/site-context";
+import cakeEmoji from "../utils/cake-emoji";
+import { transition } from "../styles/styles";
 
 export default pageProps => (
   <Fragment>
     <SiteContext.Consumer>
-      {({ webFontsLoaded, cakeEmoji }) => (
+      {({ webFontsLoaded }) => (
         <Main {...pageProps} webFontsLoaded={webFontsLoaded}>
           <TitleSection>
             <Title>
