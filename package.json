@@ -11,6 +11,7 @@
     "heroku-postbuild": "yarn run build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "next": "^8.0.0",
     "react": "^16.8.1",

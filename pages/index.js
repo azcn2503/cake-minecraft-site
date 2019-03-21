@@ -1,13 +1,17 @@
-import { Fragment } from "react";
+import { Fragment, PureComponent } from "react";
 
 import GlobalStyle from "../components/global-style";
 import About from "./about";
 
-export default pageProps => {
-  return (
-    <Fragment>
-      <GlobalStyle />
-      <About {...pageProps} />
-    </Fragment>
-  );
-};
+class IndexPage extends PureComponent {
+  render() {
+    return (
+      <Fragment>
+        <GlobalStyle />
+        <About {...this.props} />
+      </Fragment>
+    );
+  }
+}
+
+export default IndexPage;

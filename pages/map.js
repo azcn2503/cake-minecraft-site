@@ -4,11 +4,11 @@ import { withRouter } from "next/router";
 import Dialog from "../components/dialog";
 import About from "./about";
 
-export default withRouter(({ router }) => (
+export default withRouter(pageProps => (
   <Fragment>
-    <About blur />
+    <About {...pageProps} blur />
     <Dialog
-      router={router}
+      router={pageProps.router}
       title={<h1>Map</h1>}
       content={
         <Fragment>

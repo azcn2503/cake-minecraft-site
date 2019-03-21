@@ -8,6 +8,41 @@ import SiteContext from "../components/site-context";
 import cakeEmoji from "../utils/cake-emoji";
 import { transition } from "../styles/styles";
 
+const Badge = props => <StyledBadge {...props} />;
+
+const OnlineBadge = props => (
+  <Badge {...props} backgroundColor="green" color="white">
+    Online
+  </Badge>
+);
+
+const OfflineBadge = props => (
+  <Badge {...props} backgroundColor="red" color="white">
+    Offline
+  </Badge>
+);
+
+const PlayerCount = props => (
+  <StyledPlayerCount>
+    {props.now > 0 ? `(${props.now} playing right now)` : null}
+  </StyledPlayerCount>
+);
+
+const ServerStatus = props =>
+  props.server ? (
+    <Fragment>
+      <Highlighted>{props.server.name}</Highlighted>
+      {props.online ? (
+        <Fragment>
+          <OnlineBadge />
+          <PlayerCount {...props.players} />
+        </Fragment>
+      ) : (
+        <OfflineBadge />
+      )}
+    </Fragment>
+  ) : null;
+
 export default pageProps => (
   <Fragment>
     <SiteContext.Consumer>
@@ -20,7 +55,7 @@ export default pageProps => (
             <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
           </TitleSection>
           <p>
-            Current version: <Highlighted>19w07a</Highlighted>
+            Current version: <ServerStatus {...pageProps.serverStatus} />
           </p>
           <Navigation />
         </Main>
@@ -57,4 +92,20 @@ const Subtitle = styled.p`
 
 const TitleSection = styled.div`
   margin-bottom: 50px;
+`;
+
+const StyledBadge = styled.div`
+  display: inline;
+  border-radius: 4px;
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
+  padding: 2px 4px;
+  font-size: 0.8em;
+  margin-left: 5px;
+`;
+
+const StyledPlayerCount = styled.div`
+  display: inline;
+  font-size: 0.8em;
+  margin-left: 5px;
 `;

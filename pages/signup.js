@@ -6,12 +6,12 @@ import GlobalStyle from "../components/global-style";
 import Dialog from "../components/dialog";
 import TextField from "../components/textfield";
 
-export default withRouter(({ router }) => (
+export default withRouter(pageProps => (
   <Fragment>
-    <About blur />
+    <About {...pageProps} blur />
     <Dialog
       big
-      router={router}
+      router={pageProps.router}
       title={<h1>Sign up</h1>}
       content={<SignupContent />}
       DialogContentProps={{

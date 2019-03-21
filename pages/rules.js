@@ -5,10 +5,14 @@ import Link from "next/link";
 import About from "./about";
 import Dialog from "../components/dialog";
 
-export default withRouter(({ router }) => (
+export default withRouter(pageProps => (
   <Fragment>
-    <About blur />
-    <Dialog router={router} title={<h1>Rules</h1>} content={<RulesContent />} />
+    <About {...pageProps} blur />
+    <Dialog
+      router={pageProps.router}
+      title={<h1>Rules</h1>}
+      content={<RulesContent />}
+    />
   </Fragment>
 ));
 

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import App, { Container } from "next/app";
 
 import GlobalStyle from "../components/global-style";
@@ -15,11 +16,19 @@ function loadWebFonts(loader, done) {
 }
 
 class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
+  static async getInitialProps(req) {
     let pageProps = {};
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
+    if (req.Component.getInitialProps) {
+      pageProps = await req.Component.getInitialProps(req.ctx);
+    }
+
+    if (req) {
+      const res = await axios.get(
+        "https://mcapi.us/server/status?ip=cake.mc-server.net"
+      );
+      const serverStatus = await res.data;
+      pageProps.serverStatus = serverStatus;
     }
 
     return { pageProps };
