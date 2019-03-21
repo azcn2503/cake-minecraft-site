@@ -31,7 +31,7 @@ const PlayerCount = props => (
 const ServerStatus = props =>
   props.server ? (
     <Fragment>
-      <Highlighted>{props.server.name}</Highlighted>
+      Current version: <Highlighted>{props.server.name}</Highlighted>
       {props.online ? (
         <Fragment>
           <OnlineBadge />
@@ -54,9 +54,7 @@ export default pageProps => (
             </Title>
             <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
           </TitleSection>
-          <p>
-            Current version: <ServerStatus {...pageProps.serverStatus} />
-          </p>
+          <ServerStatus {...pageProps.serverStatus} />
           <Navigation />
         </Main>
       )}
