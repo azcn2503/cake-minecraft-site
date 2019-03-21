@@ -100,6 +100,7 @@ const StyledBadge = styled.div`
   padding: 2px 4px;
   font-size: 0.8em;
   margin-left: 5px;
+  text-transform: uppercase;
 `;
 
 const StyledPlayerCount = styled.div`
