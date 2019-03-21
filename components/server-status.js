@@ -18,11 +18,10 @@ const ServerStatus = props =>
     </Fragment>
   ) : null;
 
-const PlayerCount = props => (
-  <StyledPlayerCount>
-    {props.now > 0 ? `(${props.now} playing right now)` : null}
-  </StyledPlayerCount>
-);
+const PlayerCount = props =>
+  props.now > 0 ? (
+    <StyledPlayerCount>{props.now} playing right now)</StyledPlayerCount>
+  ) : null;
 
 const Highlighted = styled.span`
   color: white;
