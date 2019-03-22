@@ -6,12 +6,16 @@ const Background = () => {
   const overlayRef = useRef();
   const imageRef = useRef();
 
+  let styleUpdateBlocked = false;
   const onMouseMoveWindow = e => {
+    if (styleUpdateBlocked) return;
+    styleUpdateBlocked = true;
     requestAnimationFrame(() => {
       if (overlayRef.current) {
         overlayRef.current.style.backgroundImage = `radial-gradient(circle at ${
           e.clientX
         }px ${e.clientY}px, transparent, black 500px)`;
+        styleUpdateBlocked = false;
       }
     });
   };
