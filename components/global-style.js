@@ -61,6 +61,8 @@ export default createGlobalStyle`
   body {
     overflow: hidden;
     color: rgba(255, 255, 255, .53);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   a {
