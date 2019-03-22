@@ -67,7 +67,7 @@ const StyledStaticOverlay = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(circle at 50%, transparent, black 100%);
+  background-image: radial-gradient(circle at 50%, transparent, black 75%);
 `;
 
 const StyledDynamicOverlay = styled.div`
