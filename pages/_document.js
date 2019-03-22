@@ -25,12 +25,13 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>{cakeEmoji} Cake</title>
+          <title>Cake</title>
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
           <meta name="author" content="Aaron Cunnington" />
+          <link rel="icon" href="/static/favicon.ico" />
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>
