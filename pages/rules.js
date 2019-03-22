@@ -39,7 +39,10 @@ const RulesContent = () => (
     </li>
     <li>
       Respect zoning restrictions as described in the{" "}
-      <Link href="/map">map</Link>.
+      <Link href="/map">
+        <a>map</a>
+      </Link>
+      .
     </li>
     <li>No advertising or recruiting for other servers</li>
   </ol>

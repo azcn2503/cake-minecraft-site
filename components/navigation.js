@@ -22,7 +22,9 @@ export default withRouter(({ router }) => {
     <nav>
       {pages.map(({ href, label }, index) => (
         <Fragment key={href}>
-          <Link href={href}>{label}</Link>
+          <Link href={href}>
+            <a>{label}</a>
+          </Link>
           {index < pages.length - 1 && " | "}
         </Fragment>
       ))}
