@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styled, { css, keyframes } from "styled-components";
 
 const Badge = props => (
@@ -7,7 +8,12 @@ const Badge = props => (
   </StyledBadge>
 );
 
-const Shiny = () => <StyledShiny />;
+const Shiny = () => (
+  <Fragment>
+    <StyledShiny slow />
+    <StyledShiny fast />
+  </Fragment>
+);
 
 const onlineGlow = keyframes`
   from: {
@@ -17,21 +23,21 @@ const onlineGlow = keyframes`
     box-shadow: 0px 0px 20px rgba(0, 255, 0, .5);
   }
 `;
-const slide = keyframes`
+const slide = props => keyframes`
   0% {
     opacity: 0;
   }
   50% {
-    opacity: .5;
+    opacity: ${props.slow ? 0.5 : 0.25};
   }
   100% {
     opacity: 0;
   }
   from: {
-    transform: translateX(-100%);
+    transform: translateX(${props.slow ? "-100%" : "-200%"});
   }
   to {
-    transform: translateX(100%);
+    transform: translateX(${props.slow ? "100%" : "200%"});
   }
 `;
 
@@ -56,6 +62,7 @@ const StyledBadge = styled.div`
 
 const StyledLabel = styled.div`
   font-size: 0.8em;
+  font-weight: bold;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
   color: white;
   z-index: 2;
@@ -73,7 +80,10 @@ const StyledShiny = styled.div`
     rgba(128, 255, 128, 0.5) 50%,
     transparent 80%
   );
-  animation: ${slide} 4s ease-in-out infinite;
+  animation: ${props =>
+    css`
+      ${slide(props)} ${props.slow ? "4s" : "3.3s"} ease-in-out infinite
+    `};
   z-index: 1;
   transform: translateX(-100%);
 `;

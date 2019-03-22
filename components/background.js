@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 const Background = () => {
@@ -34,10 +34,8 @@ const Background = () => {
         onLoad={() => setLoaded(true)}
         src="/static/bg.jpg"
       />
-      <Fragment>
-        <StyledStaticOverlay />
-        <StyledDynamicOverlay ref={overlayRef} />
-      </Fragment>
+      <StyledStaticOverlay />
+      <StyledDynamicOverlay ref={overlayRef} />
     </StyledBackgroundContainer>
   );
 };
