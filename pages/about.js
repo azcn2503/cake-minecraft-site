@@ -25,7 +25,7 @@ export default pageProps => (
 );
 
 const Main = styled.div`
-  ${transition(["opacity", "filter"])}
+  ${transition(["opacity", "filter"], 1000)}
 
   position: absolute;
   top: 50%;
