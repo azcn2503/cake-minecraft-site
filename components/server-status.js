@@ -41,13 +41,21 @@ const StyledServerStatus = styled.div`
 const StyledCurrentVersion = styled.div``;
 
 const StyledPlayerCount = styled.div`
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 4px 2px 8px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  height: 18px;
   font-size: 0.8em;
-  margin-left: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  transform: translateX(-4px);
 `;
 
 const StyledBadge = styled(Badge)`
   margin-left: 10px;
+  z-index: 2;
 `;
 
 export default ServerStatus;
