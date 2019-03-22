@@ -10,7 +10,6 @@ export default withRouter(pageProps => (
   <Fragment>
     <About {...pageProps} blur />
     <Dialog
-      big
       router={pageProps.router}
       title={<h1>Sign up</h1>}
       content={<SignupContent />}

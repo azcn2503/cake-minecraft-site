@@ -74,4 +74,9 @@ export default createGlobalStyle`
       text-decoration: underline;
     }
   }
+
+  ::selection {
+    background-color: rgb(0, 128, 0);
+    color: white;
+  }
 `;

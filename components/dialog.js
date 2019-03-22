@@ -68,10 +68,8 @@ const StyledDialog = styled.div`
   ${transition()}
 
   position: absolute;
-  width: 80%;
-  /* max-width: ${props => (props.autoSize ? "100vw" : "600px")}; */
+  width: ${props => (props.big ? "80%" : "50%")};
   height: 80%;
-  /* max-height: ${props => (props.autoSize ? "100vh" : "400px")}; */
   top: 50%;
   left: 50%;
   border: 2px solid white;
