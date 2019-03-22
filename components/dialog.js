@@ -94,6 +94,7 @@ const StyledDialogTitle = styled.div`
   padding: 1em;
   border-bottom: 2px solid white;
   text-align: center;
+  background-color: black;
 
   flex-shrink: 0;
 `;

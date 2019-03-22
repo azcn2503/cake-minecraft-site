@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import App, { Container } from "next/app";
 
+import Background from "../components/background";
 import GlobalStyle from "../components/global-style";
 import SiteContext from "../components/site-context";
 
@@ -59,6 +60,7 @@ class MyApp extends App {
     return (
       <Container>
         <GlobalStyle />
+        <Background />
         <SiteContext.Provider
           value={{
             webFontsLoaded
