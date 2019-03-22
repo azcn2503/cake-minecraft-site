@@ -30,6 +30,7 @@ export default class MyDocument extends Document {
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
+          <meta name="author" content="Aaron Cunnington" />
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>
