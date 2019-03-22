@@ -20,7 +20,7 @@ const ServerStatus = props =>
 
 const PlayerCount = props =>
   props.now > 0 ? (
-    <StyledPlayerCount>{props.now} playing right now)</StyledPlayerCount>
+    <StyledPlayerCount>({props.now} playing right now)</StyledPlayerCount>
   ) : null;
 
 const Highlighted = styled.span`
