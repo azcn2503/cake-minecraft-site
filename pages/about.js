@@ -1,12 +1,10 @@
 import { Fragment } from "react";
 import styled from "styled-components";
 
-import Link from "next/link";
-
 import Navigation from "../components/navigation";
+import ServerIcon from "../components/server-icon";
 import ServerStatus from "../components/server-status";
 import SiteContext from "../components/site-context";
-import cakeEmoji from "../utils/cake-emoji";
 import { transition } from "../styles/styles";
 
 export default pageProps => (
@@ -15,9 +13,7 @@ export default pageProps => (
       {({ webFontsLoaded }) => (
         <Main {...pageProps} webFontsLoaded={webFontsLoaded}>
           <TitleSection>
-            <Title>
-              {cakeEmoji} <Link href="/">Cake</Link>
-            </Title>
+            <ServerIcon {...pageProps.serverStatus} />{" "}
             <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
           </TitleSection>
           <ServerStatus {...pageProps.serverStatus} />
@@ -39,11 +35,7 @@ const Main = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
   opacity: ${props => (props.webFontsLoaded ? 1 : 0)};
-  filter: ${props => (props.blur ? "blur(2px)" : undefined)};
-`;
-
-const Title = styled.h1`
-  color: white;
+  filter: ${props => (props.blur ? "blur(2px)" : "blur(0)")};
 `;
 
 const Subtitle = styled.p`
