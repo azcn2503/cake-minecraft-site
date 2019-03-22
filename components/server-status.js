@@ -35,6 +35,7 @@ const StyledServerStatus = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 `;
 
 const StyledCurrentVersion = styled.div``;
