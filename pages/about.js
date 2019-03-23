@@ -1,4 +1,5 @@
-import { Fragment } from "react";
+import { Fragment, useRef, useEffect } from "react";
+import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 import Navigation from "../components/navigation";
@@ -7,22 +8,35 @@ import ServerStatus from "../components/server-status";
 import SiteContext from "../components/site-context";
 import { transition } from "../styles/styles";
 
-export default pageProps => (
-  <Fragment>
-    <SiteContext.Consumer>
-      {({ webFontsLoaded }) => (
-        <Main {...pageProps} webFontsLoaded={webFontsLoaded}>
-          <TitleSection>
-            <ServerIcon {...pageProps.serverStatus} />{" "}
-            <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
-          </TitleSection>
-          <ServerStatus {...pageProps.serverStatus} />
-          <Navigation />
-        </Main>
-      )}
-    </SiteContext.Consumer>
-  </Fragment>
-);
+export default pageProps => {
+  const mainRef = useRef();
+  useEffect(() => {
+    if (!mainRef.current) return;
+    const mainEl = ReactDOM.findDOMNode(mainRef.current);
+    const { width, height } = mainEl.getBoundingClientRect();
+    const halfWidthRounded = Math.round(width / 2);
+    const halfHeightRounded = Math.round(height / 2);
+    const halfWidth = width - halfWidthRounded;
+    const halfHeight = height - halfHeightRounded;
+    mainEl.style.transform = `translate(-${halfWidth}px, -${halfHeight}px)`;
+  });
+  return (
+    <Fragment>
+      <SiteContext.Consumer>
+        {({ webFontsLoaded }) => (
+          <Main ref={mainRef} {...pageProps} webFontsLoaded={webFontsLoaded}>
+            <TitleSection>
+              <ServerIcon {...pageProps.serverStatus} />{" "}
+              <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
+            </TitleSection>
+            <ServerStatus {...pageProps.serverStatus} />
+            <Navigation />
+          </Main>
+        )}
+      </SiteContext.Consumer>
+    </Fragment>
+  );
+};
 
 const Main = styled.div`
   ${transition(["opacity", "filter"], 1000)}
