@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-const Background = () => {
+const Background = ({ serverStatus }) => {
   const [loaded, setLoaded] = useState(false);
   const overlayRef = useRef();
   const imageRef = useRef();
@@ -33,6 +33,7 @@ const Background = () => {
   return (
     <StyledBackgroundContainer>
       <StyledImage
+        online={serverStatus.online}
         ref={imageRef}
         loaded={loaded}
         onLoad={() => setLoaded(true)}
@@ -54,13 +55,14 @@ const StyledBackgroundContainer = styled.div`
 `;
 
 const StyledImage = styled.img`
-  transition-property: opacity;
+  transition-property: opacity, filter;
   transition-duration: 4s;
   opacity: ${props => (props.loaded ? 1 : 0)};
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  filter: ${props => (!props.online ? "hue-rotate(-90deg)" : undefined)};
 `;
 
 const StyledStaticOverlay = styled.div`

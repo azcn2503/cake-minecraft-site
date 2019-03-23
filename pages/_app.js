@@ -16,7 +16,7 @@ function loadWebFonts(loader, done) {
   });
 }
 
-class MyApp extends App {
+class CakeApp extends App {
   static async getInitialProps(req) {
     let pageProps = {};
 
@@ -60,7 +60,7 @@ class MyApp extends App {
     return (
       <Container>
         <GlobalStyle />
-        <Background />
+        <Background serverStatus={pageProps.serverStatus} />
         <SiteContext.Provider
           value={{
             webFontsLoaded
@@ -73,4 +73,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp;
+export default CakeApp;
