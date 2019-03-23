@@ -47,7 +47,10 @@ const Dialog = ({
           open
         })}
       >
-        <DialogTitle>{title}</DialogTitle>
+        <DialogTitle>
+          <div>{title}</div>
+          <CloseButton onClick={closeDialog} />
+        </DialogTitle>
         <DialogContent {...DialogContentProps}>{content}</DialogContent>
       </StyledDialog>
     </Fragment>
@@ -58,17 +61,40 @@ Dialog.defaultProps = {
   DialogContentProps: {}
 };
 
+const CloseButton = ({ onClick }) => (
+  <StyledButton type="button" onClick={onClick}>
+    <StyledCloseIcon className="fas fa-times" />
+  </StyledButton>
+);
+
 const DialogTitle = props => <StyledDialogTitle {...props} />;
 
 const DialogBackground = props => <StyledDialogBackground {...props} />;
 
 const DialogContent = props => <StyledDialogContent {...props} />;
 
+const StyledButton = styled.button`
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font: inherit;
+  color: inherit;
+
+  &:hover {
+    color: white;
+  }
+`;
+
 const StyledDialog = styled.div`
   ${transition()}
 
   position: absolute;
   width: ${props => (props.big ? "80%" : "50%")};
+  min-width: 600px;
   height: 80%;
   top: 50%;
   left: 50%;
@@ -85,6 +111,12 @@ const StyledDialog = styled.div`
   &.open {
     opacity: 1;
     transform: translate(-50%, -50%);
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 80%;
+    height: 80%;
+    min-width: unset;
   }
 `;
 
@@ -117,6 +149,10 @@ const StyledDialogBackground = styled.div`
   &.open {
     opacity: 1;
   }
+`;
+
+const StyledCloseIcon = styled.i`
+  font-size: 2em;
 `;
 
 export default Dialog;

@@ -32,6 +32,12 @@ export default class MyDocument extends Document {
           />
           <meta name="author" content="Aaron Cunnington" />
           <link rel="icon" href="/static/favicon.ico" />
+          <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+            crossorigin="anonymous"
+          />
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
         </Head>
