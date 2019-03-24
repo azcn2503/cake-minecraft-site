@@ -27,11 +27,17 @@ yarn run build
 Then either run the app...
 
 ```bash
-yarn run start
+PORT=3000 yarn run start
 ```
+
+(The app will use the PORT environment variable, but you can override it)
 
 ... or spin up a local development version:
 
 ```bash
 yarn run dev
 ```
+
+### Troubleshooting
+
+If you're having issues with engine requirements being too strict (for the node and yarn versions) then you may be able to start the app using the `--ignore-engines` flag.
