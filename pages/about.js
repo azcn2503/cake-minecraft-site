@@ -1,25 +1,16 @@
-import { Fragment, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
+import { Fragment, useRef } from "react";
 import styled from "styled-components";
 
 import Navigation from "../components/navigation";
 import ServerIcon from "../components/server-icon";
 import ServerStatus from "../components/server-status";
 import SiteContext from "../components/site-context";
+import { usePixelTranslateEffect } from "../components/effects";
 import { transition } from "../styles/styles";
 
 export default pageProps => {
   const mainRef = useRef();
-  useEffect(() => {
-    if (!mainRef.current) return;
-    const mainEl = ReactDOM.findDOMNode(mainRef.current);
-    const { width, height } = mainEl.getBoundingClientRect();
-    const halfWidthRounded = Math.round(width / 2);
-    const halfHeightRounded = Math.round(height / 2);
-    const halfWidth = width - halfWidthRounded;
-    const halfHeight = height - halfHeightRounded;
-    mainEl.style.transform = `translate(-${halfWidth}px, -${halfHeight}px)`;
-  });
+  usePixelTranslateEffect(mainRef);
   return (
     <Fragment>
       <SiteContext.Consumer>
@@ -44,7 +35,7 @@ const Main = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  max-width: 600px;
+  width: 400px;
   max-height: 400px;
   transform: translate(-50%, -50%);
   text-align: center;
