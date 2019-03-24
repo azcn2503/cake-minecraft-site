@@ -10,8 +10,9 @@ const Badge = props => (
 
 const Shiny = () => (
   <Fragment>
-    <StyledShiny slow />
-    <StyledShiny fast />
+    <StyledShiny duration={4000} peakOpacity={0.5} />
+    <StyledShiny duration={3300} peakOpacity={0.25} />
+    <StyledShiny duration={7000} peakOpacity={0.25} reverse />
   </Fragment>
 );
 
@@ -28,16 +29,16 @@ const slide = props => keyframes`
     opacity: 0;
   }
   50% {
-    opacity: ${props.slow ? 0.5 : 0.25};
+    opacity: ${props.peakOpacity};
   }
   100% {
     opacity: 0;
   }
   from: {
-    transform: translateX(${props.slow ? "-100%" : "-200%"});
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(${props.slow ? "100%" : "200%"});
+    transform: translateX(100%);
   }
 `;
 
@@ -82,7 +83,9 @@ const StyledShiny = styled.div`
   );
   animation: ${props =>
     css`
-      ${slide(props)} ${props.slow ? "4s" : "3.3s"} ease-in-out infinite
+      ${slide(props)} ${props.duration}ms ease-in-out infinite ${
+      props.reverse ? "reverse" : ""
+    }
     `};
   z-index: 1;
   transform: translateX(-100%);
