@@ -43,7 +43,8 @@ class CakeApp extends App {
   constructor(props) {
     super(props);
     this.state = {
-      webFontsLoaded: false
+      webFontsLoaded: false,
+      devMode: props.devMode
     };
   }
 
@@ -59,8 +60,8 @@ class CakeApp extends App {
   }
 
   render() {
-    const { Component, pageProps, devMode } = this.props;
-    const { webFontsLoaded } = this.state;
+    const { Component, pageProps } = this.props;
+    const { webFontsLoaded, devMode } = this.state;
 
     return (
       <Container>
