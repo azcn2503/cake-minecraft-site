@@ -16,6 +16,7 @@ const StyledDevBanner = styled.div`
   color: white;
   text-align: center;
   text-transform: uppercase;
+  font-weight: bold;
   transform: ${props => (props.open ? "translateY(0)" : "translateY(-100%)")};
 `;
 
