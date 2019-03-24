@@ -3,6 +3,7 @@ import axios from "axios";
 import App, { Container } from "next/app";
 
 import Background from "../components/background";
+import DevBanner from "../components/dev-banner";
 import GlobalStyle from "../components/global-style";
 import SiteContext from "../components/site-context";
 
@@ -19,12 +20,16 @@ function loadWebFonts(loader, done) {
 class CakeApp extends App {
   static async getInitialProps(req) {
     let pageProps = {};
+    let devMode = false;
 
     if (req.Component.getInitialProps) {
       pageProps = await req.Component.getInitialProps(req.ctx);
     }
 
     if (req) {
+      devMode =
+        process.env.NODE_ENV === "development" ||
+        process.env.CAKE_DEV !== undefined;
       const res = await axios.get(
         "https://mcapi.us/server/status?ip=cake.mc-server.net"
       );
@@ -32,7 +37,7 @@ class CakeApp extends App {
       pageProps.serverStatus = serverStatus;
     }
 
-    return { pageProps };
+    return { pageProps, devMode };
   }
 
   constructor(props) {
@@ -54,7 +59,7 @@ class CakeApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, devMode } = this.props;
     const { webFontsLoaded } = this.state;
 
     return (
@@ -68,6 +73,7 @@ class CakeApp extends App {
         >
           <Component {...pageProps} />
         </SiteContext.Provider>
+        {devMode && <DevBanner open={webFontsLoaded} />}
       </Container>
     );
   }
