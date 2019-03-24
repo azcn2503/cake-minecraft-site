@@ -1,4 +1,4 @@
-import { Fragment, useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 
 import Navigation from "../components/navigation";
@@ -12,20 +12,18 @@ export default pageProps => {
   const mainRef = useRef();
   usePixelTranslateEffect(mainRef);
   return (
-    <Fragment>
-      <SiteContext.Consumer>
-        {({ webFontsLoaded }) => (
-          <Main ref={mainRef} {...pageProps} webFontsLoaded={webFontsLoaded}>
-            <TitleSection>
-              <ServerIcon {...pageProps.serverStatus} />{" "}
-              <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
-            </TitleSection>
-            <ServerStatus {...pageProps.serverStatus} />
-            <Navigation />
-          </Main>
-        )}
-      </SiteContext.Consumer>
-    </Fragment>
+    <SiteContext.Consumer>
+      {({ webFontsLoaded }) => (
+        <Main ref={mainRef} {...pageProps} webFontsLoaded={webFontsLoaded}>
+          <TitleSection>
+            <ServerIcon {...pageProps.serverStatus} />{" "}
+            <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
+          </TitleSection>
+          <ServerStatus {...pageProps.serverStatus} />
+          <Navigation />
+        </Main>
+      )}
+    </SiteContext.Consumer>
   );
 };
 
