@@ -3,16 +3,26 @@ import styled from "styled-components";
 
 const Background = ({ serverStatus }) => {
   const [loaded, setLoaded] = useState(false);
-  const overlayRef = useRef();
+  const staticOverlayRef = useRef();
+  const dynamicOverlayRef = useRef();
   const imageRef = useRef();
+
+  const onLoadImage = () => {
+    setLoaded(true);
+    const { width, height } = imageRef.current.getBoundingClientRect();
+    staticOverlayRef.current.style.backgroundImage = `radial-gradient(circle at 50%, transparent, black ${Math.min(
+      width / 2,
+      height / 2
+    )}px)`;
+  };
 
   let styleUpdateBlocked = false;
   const onMouseMoveWindow = e => {
     if (styleUpdateBlocked) return;
     styleUpdateBlocked = true;
     requestAnimationFrame(() => {
-      if (overlayRef.current) {
-        overlayRef.current.style.backgroundImage = `radial-gradient(circle at ${
+      if (dynamicOverlayRef.current) {
+        dynamicOverlayRef.current.style.backgroundImage = `radial-gradient(circle at ${
           e.clientX
         }px ${e.clientY}px, transparent, black 500px)`;
         styleUpdateBlocked = false;
@@ -22,7 +32,7 @@ const Background = ({ serverStatus }) => {
 
   useEffect(() => {
     if (imageRef.current.complete) {
-      setLoaded(true);
+      onLoadImage();
     }
     window.addEventListener("mousemove", onMouseMoveWindow);
     return () => {
@@ -36,11 +46,11 @@ const Background = ({ serverStatus }) => {
         online={serverStatus.online}
         ref={imageRef}
         loaded={loaded}
-        onLoad={() => setLoaded(true)}
+        onLoad={onLoadImage}
         src="/static/bg.jpg"
       />
-      <StyledStaticOverlay />
-      <StyledDynamicOverlay ref={overlayRef} />
+      <StyledStaticOverlay ref={staticOverlayRef} />
+      <StyledDynamicOverlay ref={dynamicOverlayRef} />
     </StyledBackgroundContainer>
   );
 };
