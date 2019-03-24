@@ -30,13 +30,13 @@ Then either run the app...
 PORT=3000 yarn run start
 ```
 
-(The app will use the PORT environment variable, but you can override it)
-
 ... or spin up a local development version:
 
 ```bash
 yarn run dev
 ```
+
+When running locally, or when deployed to the Heroku test instance, a banner will be displayed at the top of the site. This is to easily distinguish between the development and live deployments.
 
 ### Troubleshooting
 
