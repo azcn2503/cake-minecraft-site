@@ -1,5 +1,4 @@
 import { withRouter } from "next/router";
-import Link from "next/link";
 import styled from "styled-components";
 
 const pages = [
@@ -25,12 +24,17 @@ export default withRouter(({ router }) => {
     <StyledNav>
       {pages.map(({ iconClassName, href, label }) => (
         <StyledLinkContainer key={href}>
-          <Link href={href}>
-            <a>
-              {iconClassName && <StyledIcon className={iconClassName} />}
-              {label}
-            </a>
-          </Link>
+          <a
+            href={href}
+            onClick={e => {
+              e.preventDefault();
+              router.replace(href);
+              console.log("!");
+            }}
+          >
+            {iconClassName && <StyledIcon className={iconClassName} />}
+            {label}
+          </a>
         </StyledLinkContainer>
       ))}
     </StyledNav>

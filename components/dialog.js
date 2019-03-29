@@ -15,7 +15,7 @@ const Dialog = ({
 }) => {
   const closeDialog = () => {
     setOpen(false);
-    setTimeout(() => router.push("/"), transitionDuration);
+    setTimeout(() => router.replace("/"), transitionDuration);
   };
   const onWindowKeyDown = ({ keyCode }) => {
     if (keyCode === 27) {
