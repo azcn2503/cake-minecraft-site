@@ -56,6 +56,7 @@ const StyledPlayerCount = styled.div`
 const StyledBadge = styled(Badge)`
   margin-left: 10px;
   z-index: 2;
+  flex-shrink: 0;
 `;
 
 export default ServerStatus;
