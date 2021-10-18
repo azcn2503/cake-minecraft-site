@@ -10,9 +10,7 @@ export default class MyDocument extends Document {
     const sheet = new ServerStyleSheet();
 
     // Step 2: Retrieve styles from components in the page
-    const page = renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />)
-    );
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
 
     // Step 3: Extract the styles as <style> tags
     const styleTags = sheet.getStyleElement();
@@ -26,10 +24,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>Cake</title>
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <meta name="author" content="Aaron Cunnington" />
           <link rel="icon" href="/static/favicon.ico" />
           <link

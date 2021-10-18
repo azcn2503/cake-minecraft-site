@@ -5,14 +5,7 @@ import { transition } from "../styles/styles";
 
 const transitionDuration = 200;
 
-const Dialog = ({
-  router,
-  title,
-  content,
-  autoSize,
-  DialogContentProps,
-  big
-}) => {
+const Dialog = ({ router, title, content, autoSize, DialogContentProps, big }) => {
   const closeDialog = () => {
     setOpen(false);
     setTimeout(() => router.replace("/"), transitionDuration);
@@ -36,15 +29,12 @@ const Dialog = ({
 
   return (
     <Fragment>
-      <DialogBackground
-        onClick={closeDialog}
-        className={classNames({ open })}
-      />
+      <DialogBackground onClick={closeDialog} className={classNames({ open })} />
       <StyledDialog
         big={big}
         autoSize={autoSize}
         className={classNames({
-          open
+          open,
         })}
       >
         <DialogTitle>
@@ -58,7 +48,7 @@ const Dialog = ({
 };
 
 Dialog.defaultProps = {
-  DialogContentProps: {}
+  DialogContentProps: {},
 };
 
 const CloseButton = ({ onClick }) => (
@@ -138,13 +128,14 @@ const StyledDialogContent = styled.div`
 const StyledDialogBackground = styled.div`
   ${transition()}
 
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  left: 0;
+  opacity: 0;
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  opacity: 0;
 
   &.open {
     opacity: 1;

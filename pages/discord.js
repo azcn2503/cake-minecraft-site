@@ -7,15 +7,13 @@ import About from "./about";
 
 export default withRouter(pageProps => (
   <Fragment>
-    <About {...pageProps} blur />
+    <About {...pageProps} />
     <Dialog
       router={pageProps.router}
       title={<h1>Discord</h1>}
       content={
         <StyledContent>
-          <a href="https://discord.gg/Bdrv25U">
-            Click here to go to our Discord server
-          </a>
+          <a href="https://discord.gg/Bdrv25U">Click here to go to our Discord server</a>
         </StyledContent>
       }
     />

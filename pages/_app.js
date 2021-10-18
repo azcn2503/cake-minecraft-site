@@ -10,10 +10,10 @@ import SiteContext from "../components/site-context";
 function loadWebFonts(loader, done) {
   loader.load({
     google: {
-      families: ["Droid Sans"]
+      families: ["Droid Sans"],
     },
     active: () => done(),
-    inactive: () => done()
+    inactive: () => done(),
   });
 }
 
@@ -27,12 +27,8 @@ class CakeApp extends App {
     }
 
     if (req) {
-      devMode =
-        process.env.NODE_ENV === "development" ||
-        process.env.CAKE_DEV !== undefined;
-      const res = await axios.get(
-        "https://mcapi.us/server/status?ip=cake.mc-server.net"
-      );
+      devMode = process.env.NODE_ENV === "development" || process.env.CAKE_DEV !== undefined;
+      const res = await axios.get("https://mcapi.us/server/status?ip=cake.mc-server.net");
       const serverStatus = await res.data;
       pageProps.serverStatus = serverStatus;
     }
@@ -44,7 +40,7 @@ class CakeApp extends App {
     super(props);
     this.state = {
       webFontsLoaded: false,
-      devMode: props.devMode
+      devMode: props.devMode,
     };
   }
 
@@ -53,7 +49,7 @@ class CakeApp extends App {
       const webFontLoader = await require("webfontloader");
       loadWebFonts(webFontLoader, () => {
         this.setState({
-          webFontsLoaded: true
+          webFontsLoaded: true,
         });
       });
     }
@@ -69,7 +65,7 @@ class CakeApp extends App {
         <Background serverStatus={pageProps.serverStatus} />
         <SiteContext.Provider
           value={{
-            webFontsLoaded
+            webFontsLoaded,
           }}
         >
           <Component {...pageProps} />

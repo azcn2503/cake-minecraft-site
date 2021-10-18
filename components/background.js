@@ -22,9 +22,9 @@ const Background = ({ serverStatus }) => {
     styleUpdateBlocked = true;
     requestAnimationFrame(() => {
       if (dynamicOverlayRef.current) {
-        dynamicOverlayRef.current.style.backgroundImage = `radial-gradient(circle at ${
-          e.clientX
-        }px ${e.clientY}px, transparent, black 500px)`;
+        dynamicOverlayRef.current.style.backgroundImage = `radial-gradient(circle at ${e.clientX}px ${
+          e.clientY
+        }px, transparent, black 500px)`;
         styleUpdateBlocked = false;
       }
     });

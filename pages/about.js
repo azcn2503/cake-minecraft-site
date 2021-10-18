@@ -16,8 +16,7 @@ export default pageProps => {
       {({ webFontsLoaded }) => (
         <Main ref={mainRef} {...pageProps} webFontsLoaded={webFontsLoaded}>
           <TitleSection>
-            <ServerIcon {...pageProps.serverStatus} />{" "}
-            <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
+            <ServerIcon {...pageProps.serverStatus} /> <Subtitle>A Minecraft snapshot whitelist community</Subtitle>
           </TitleSection>
           <ServerStatus {...pageProps.serverStatus} />
           <Navigation />
@@ -38,7 +37,6 @@ const Main = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
   opacity: ${props => (props.webFontsLoaded ? 1 : 0)};
-  filter: ${props => (props.blur ? "blur(2px)" : "blur(0)")};
 `;
 
 const Subtitle = styled.p`

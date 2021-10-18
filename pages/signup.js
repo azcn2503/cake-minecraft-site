@@ -8,7 +8,7 @@ import TextField from "../components/textfield";
 
 export default withRouter(pageProps => (
   <Fragment>
-    <About {...pageProps} blur />
+    <About {...pageProps} />
     <Dialog
       router={pageProps.router}
       title={<h1>Sign up</h1>}
@@ -16,8 +16,8 @@ export default withRouter(pageProps => (
       DialogContentProps={{
         style: {
           padding: 0,
-          overflow: "hidden"
-        }
+          overflow: "hidden",
+        },
       }}
     />
   </Fragment>

@@ -75,17 +75,10 @@ const StyledShiny = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(
-    115deg,
-    transparent 20%,
-    rgba(128, 255, 128, 0.5) 50%,
-    transparent 80%
-  );
+  background-image: linear-gradient(115deg, transparent 20%, rgba(128, 255, 128, 0.5) 50%, transparent 80%);
   animation: ${props =>
     css`
-      ${slide(props)} ${props.duration}ms ease-in-out infinite ${
-      props.reverse ? "reverse" : ""
-    }
+      ${slide(props)} ${props.duration}ms ease-in-out infinite ${props.reverse ? "reverse" : ""}
     `};
   z-index: 1;
   transform: translateX(-100%);

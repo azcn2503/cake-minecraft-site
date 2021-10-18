@@ -5,18 +5,18 @@ const pages = [
   {
     iconClassName: "fas fa-list",
     label: "Rules",
-    href: "/rules"
+    href: "/rules",
   },
   {
     iconClassName: "fas fa-user-plus",
     label: "Sign up",
-    href: "/signup"
+    href: "/signup",
   },
   {
     iconClassName: "fab fa-discord",
     label: "Discord",
-    href: "/discord"
-  }
+    href: "/discord",
+  },
 ];
 
 export default withRouter(({ router }) => {

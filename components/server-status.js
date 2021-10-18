@@ -22,9 +22,7 @@ const ServerStatus = props =>
   ) : null;
 
 const PlayerCount = props =>
-  props.now > 0 ? (
-    <StyledPlayerCount>({props.now} playing right now)</StyledPlayerCount>
-  ) : null;
+  props.now > 0 ? <StyledPlayerCount>({props.now} playing right now)</StyledPlayerCount> : null;
 
 const StyledVersionLabel = styled.span`
   color: white;

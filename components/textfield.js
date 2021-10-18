@@ -21,9 +21,7 @@ export default ({ fullWidth, placeholder }) => {
         value={value}
         onChange={e => setValue(e.target.value)}
       />
-      <PlaceholderOverlay ref={placeholderRef}>
-        {placeholder}
-      </PlaceholderOverlay>
+      <PlaceholderOverlay ref={placeholderRef}>{placeholder}</PlaceholderOverlay>
     </StyledTextFieldContainer>
   );
 };

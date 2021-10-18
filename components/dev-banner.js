@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { transition } from "../styles/styles";
 
-const DevBanner = ({ open }) => (
-  <StyledDevBanner open={open}>Development site</StyledDevBanner>
-);
+const DevBanner = ({ open }) => <StyledDevBanner open={open}>Development site</StyledDevBanner>;
 
 const StyledDevBanner = styled.div`
   ${transition(["transform"])};

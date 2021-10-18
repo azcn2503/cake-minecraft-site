@@ -6,7 +6,7 @@ import About from "./about";
 
 export default withRouter(pageProps => (
   <Fragment>
-    <About {...pageProps} blur />
+    <About {...pageProps} />
     <Dialog
       router={pageProps.router}
       title={<h1>Map</h1>}
